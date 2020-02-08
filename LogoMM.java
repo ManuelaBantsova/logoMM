@@ -1,18 +1,16 @@
 package logo;
 
-import java.util.Scanner;
-
 public class LogoMM {
-    private int N;
+    private int n;
     private int rows;
     private int middle;
     private int x;
     private int y;
     private StringBuilder basic;
 
-    public LogoMM(int N) {
-        this.N = N;
-        this.rows = N + 1;
+    public LogoMM(int n) {
+        this.n = n;
+        this.rows = n + 1;
         this.middle = rows/2;
         this.x = 0;
         this.y = 0;
@@ -20,7 +18,7 @@ public class LogoMM {
     }
 
     public void printMMLogo() {
-        basic.append("*".repeat(Math.max(0, this.N)));
+        basic.append("*".repeat(Math.max(0, this.n)));
         for (int i = 0; i < rows; i++) {
             StringBuilder startRow = emptyRow();
             if (i < middle) {
@@ -38,9 +36,9 @@ public class LogoMM {
      */
     private void printFirsHalf(StringBuilder printRow) {
         printRow.replace(
-                (N - x), (2 * N + x), currentRowStars(basic, x).toString());
+                (n - x), (2 * n + x), currentRowStars(basic, x).toString());
         printRow.replace(
-                (3*N - x), (4*N + x), currentRowStars(basic, x).toString());
+                (3* n - x), (4* n + x), currentRowStars(basic, x).toString());
         printRow.append(printRow);
         System.out.println(printRow);
         x++;
@@ -55,9 +53,9 @@ public class LogoMM {
      */
     private void printSecondHalf(StringBuilder printRow) {
         y--;
-        printRow.replace((N - x), (N + y), basic.toString());
-        printRow.replace((N + x), (3*N + y), currentRowStars(basic, y).toString());
-        printRow.replace((3*N + x), (4*N + x), basic.toString());
+        printRow.replace((n - x), (n + y), basic.toString());
+        printRow.replace((n + x), (3* n + y), currentRowStars(basic, y).toString());
+        printRow.replace((3* n + x), (4* n + x), basic.toString());
         printRow.append(printRow);
         System.out.println(printRow);
         x++;
@@ -80,7 +78,7 @@ public class LogoMM {
      */
     private StringBuilder emptyRow() {
         StringBuilder emptyRow = new StringBuilder();
-        emptyRow.append("-".repeat(Math.max(0, 5 * N)));
+        emptyRow.append("-".repeat(Math.max(0, 5 * n)));
         return emptyRow;
     }
 }

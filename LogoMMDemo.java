@@ -9,9 +9,9 @@ public class LogoMMDemo {
         boolean isPrinted = false;
         do {
             System.out.print("Please, enter desired letter thickness: ");
-            int N = scanner.nextInt();
-            if ((N > 2 && N < 10_000) && (N % 2 != 0)) {
-                LogoMM logo = new LogoMM(N);
+            int n = scanner.nextInt();
+            if ((n > 2 && n < 10_000) && (n % 2 != 0)) {
+                LogoMM logo = new LogoMM(n);
                 logo.printMMLogo();
                 isPrinted = true;
             } else {
