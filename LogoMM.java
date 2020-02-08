@@ -6,7 +6,7 @@ public class LogoMM {
     private int middle;
     private int x;
     private int y;
-    private StringBuilder basic;
+    private StringBuilder basicStars;
 
     public LogoMM(int n) {
         this.n = n;
@@ -14,11 +14,11 @@ public class LogoMM {
         this.middle = rows/2;
         this.x = 0;
         this.y = 0;
-        this.basic = new StringBuilder();
+        this.basicStars = new StringBuilder();
     }
 
     public void printMMLogo() {
-        basic.append("*".repeat(n));
+        basicStars.append("*".repeat(n));
         for (int i = 0; i < rows; i++) {
             StringBuilder startRow = emptyRow();
             if (i < middle) {
@@ -36,9 +36,9 @@ public class LogoMM {
      */
     private void printFirsHalf(StringBuilder printRow) {
         printRow.replace(
-                (n - x), (2*n + x), currentRowStars(basic, x).toString());
+                (n - x), (2*n + x), currentRowStars(basicStars, x).toString());
         printRow.replace(
-                (3*n - x), (4*n + x), currentRowStars(basic, x).toString());
+                (3*n - x), (4*n + x), currentRowStars(basicStars, x).toString());
         printRow.append(printRow);
         System.out.println(printRow);
         x++;
@@ -53,9 +53,9 @@ public class LogoMM {
      */
     private void printSecondHalf(StringBuilder printRow) {
         y--;
-        printRow.replace((n - x), (n + y), basic.toString());
-        printRow.replace((n + x), (3*n + y), currentRowStars(basic, y).toString());
-        printRow.replace((3*n + x), (4*n + x), basic.toString());
+        printRow.replace((n - x), (n + y), basicStars.toString());
+        printRow.replace((n + x), (3*n + y), currentRowStars(basicStars, y).toString());
+        printRow.replace((3*n + x), (4*n + x), basicStars.toString());
         printRow.append(printRow);
         System.out.println(printRow);
         x++;
