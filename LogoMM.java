@@ -34,9 +34,11 @@ public class LogoMM {
      */
     private void printFirsHalf(StringBuilder printRow, int currentRowNum) {
         printRow.replace(
-                (n - currentRowNum), (2*n + currentRowNum), currentRowStars(basicStars, currentRowNum).toString());
+                (n - currentRowNum), (2*n + currentRowNum),
+                currentRowStars(basicStars, currentRowNum).toString());
         printRow.replace(
-                (3*n - currentRowNum), (4*n + currentRowNum), currentRowStars(basicStars, currentRowNum).toString());
+                (3*n - currentRowNum), (4*n + currentRowNum),
+                currentRowStars(basicStars, currentRowNum).toString());
         printRow.append(printRow);
         System.out.println(printRow);
         //countdown is counting for the method printSecondHalf()
@@ -50,9 +52,12 @@ public class LogoMM {
      */
     private void printSecondHalf(StringBuilder printRow, int currentRowNum) {
         countdown--;
-        printRow.replace((n - currentRowNum), (n + countdown), basicStars.toString());
-        printRow.replace((n + currentRowNum), (3*n + countdown), currentRowStars(basicStars, countdown).toString());
-        printRow.replace((3*n + currentRowNum), (4*n + currentRowNum), basicStars.toString());
+        printRow.replace((n - currentRowNum), (n + countdown),
+                basicStars.toString());
+        printRow.replace((n + currentRowNum), (3*n + countdown),
+                currentRowStars(basicStars, countdown).toString());
+        printRow.replace((3*n + currentRowNum), (4*n + currentRowNum),
+                basicStars.toString());
         printRow.append(printRow);
         System.out.println(printRow);
     }
