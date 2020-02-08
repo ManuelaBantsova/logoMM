@@ -18,7 +18,7 @@ public class LogoMM {
     }
 
     public void printMMLogo() {
-        basic.append("*".repeat(Math.max(0, this.n)));
+        basic.append("*".repeat(n));
         for (int i = 0; i < rows; i++) {
             StringBuilder startRow = emptyRow();
             if (i < middle) {
@@ -36,9 +36,9 @@ public class LogoMM {
      */
     private void printFirsHalf(StringBuilder printRow) {
         printRow.replace(
-                (n - x), (2 * n + x), currentRowStars(basic, x).toString());
+                (n - x), (2*n + x), currentRowStars(basic, x).toString());
         printRow.replace(
-                (3* n - x), (4* n + x), currentRowStars(basic, x).toString());
+                (3*n - x), (4*n + x), currentRowStars(basic, x).toString());
         printRow.append(printRow);
         System.out.println(printRow);
         x++;
@@ -54,8 +54,8 @@ public class LogoMM {
     private void printSecondHalf(StringBuilder printRow) {
         y--;
         printRow.replace((n - x), (n + y), basic.toString());
-        printRow.replace((n + x), (3* n + y), currentRowStars(basic, y).toString());
-        printRow.replace((3* n + x), (4* n + x), basic.toString());
+        printRow.replace((n + x), (3*n + y), currentRowStars(basic, y).toString());
+        printRow.replace((3*n + x), (4*n + x), basic.toString());
         printRow.append(printRow);
         System.out.println(printRow);
         x++;
@@ -69,7 +69,8 @@ public class LogoMM {
      */
     private StringBuilder currentRowStars(StringBuilder basic, int counter) {
         StringBuilder currentRowStars = new StringBuilder(basic);
-        currentRowStars.append("*".repeat(Math.max(0, 2 * counter)));
+        int STARS_MULTIPLIER = 2;
+        currentRowStars.append("*".repeat(STARS_MULTIPLIER * counter));
         return currentRowStars;
     }
 
@@ -78,7 +79,8 @@ public class LogoMM {
      */
     private StringBuilder emptyRow() {
         StringBuilder emptyRow = new StringBuilder();
-        emptyRow.append("-".repeat(Math.max(0, 5 * n)));
+        int WIDTH_MULTIPLIER = 5;
+        emptyRow.append("-".repeat(WIDTH_MULTIPLIER * n));
         return emptyRow;
     }
 }
