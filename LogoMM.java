@@ -4,16 +4,14 @@ public class LogoMM {
     private int n;
     private int rows;
     private int middle;
-    private int x;
-    private int y;
+    private int countdown;
     private StringBuilder basicStars;
 
     public LogoMM(int n) {
         this.n = n;
         this.rows = n + 1;
         this.middle = rows/2;
-        this.x = 0;
-        this.y = 0;
+        this.countdown = 0;
         this.basicStars = new StringBuilder();
     }
 
@@ -22,9 +20,9 @@ public class LogoMM {
         for (int i = 0; i < rows; i++) {
             StringBuilder startRow = emptyRow();
             if (i < middle) {
-                printFirsHalf(startRow);
+                printFirsHalf(startRow, i);
             } else {
-                printSecondHalf(startRow);
+                printSecondHalf(startRow, i);
             }
         }
     }
@@ -34,16 +32,15 @@ public class LogoMM {
     stars on the right places
     after the replacement it is printing the final row
      */
-    private void printFirsHalf(StringBuilder printRow) {
+    private void printFirsHalf(StringBuilder printRow, int currentRowNum) {
         printRow.replace(
-                (n - x), (2*n + x), currentRowStars(basicStars, x).toString());
+                (n - currentRowNum), (2*n + currentRowNum), currentRowStars(basicStars, currentRowNum).toString());
         printRow.replace(
-                (3*n - x), (4*n + x), currentRowStars(basicStars, x).toString());
+                (3*n - currentRowNum), (4*n + currentRowNum), currentRowStars(basicStars, currentRowNum).toString());
         printRow.append(printRow);
         System.out.println(printRow);
-        x++;
-        //y is counting for the method printSecondHalf()
-        y++;
+        //countdown is counting for the method printSecondHalf()
+        countdown++;
     }
 
     /*
@@ -51,21 +48,20 @@ public class LogoMM {
     stars on the right places
     after the replacement it is printing the final row
      */
-    private void printSecondHalf(StringBuilder printRow) {
-        y--;
-        printRow.replace((n - x), (n + y), basicStars.toString());
-        printRow.replace((n + x), (3*n + y), currentRowStars(basicStars, y).toString());
-        printRow.replace((3*n + x), (4*n + x), basicStars.toString());
+    private void printSecondHalf(StringBuilder printRow, int currentRowNum) {
+        countdown--;
+        printRow.replace((n - currentRowNum), (n + countdown), basicStars.toString());
+        printRow.replace((n + currentRowNum), (3*n + countdown), currentRowStars(basicStars, countdown).toString());
+        printRow.replace((3*n + currentRowNum), (4*n + currentRowNum), basicStars.toString());
         printRow.append(printRow);
         System.out.println(printRow);
-        x++;
     }
 
     /*
     creating the stars for each row, taking as parameter
     the basic N*stars StringBuilder and counter
-    for first half the counter is x,
-    for the second half the counter is y
+    for first half the counter is the current row,
+    for the second half the counter is countdown
      */
     private StringBuilder currentRowStars(StringBuilder basic, int counter) {
         StringBuilder currentRowStars = new StringBuilder(basic);
